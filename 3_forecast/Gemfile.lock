@@ -1,0 +1,12 @@
+GEM
+  specs:
+    date (2.0.0)
+
+PLATFORMS
+  ruby
+
+DEPENDENCIES
+  date
+
+BUNDLED WITH
+   2.0.2

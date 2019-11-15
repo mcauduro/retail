@@ -1,7 +1,5 @@
-require 'yaml'
-require 'json'
-require 'holidays'
-require 'faker'
+require 'date'
+require 'time'
 
 PRODUCTS = [ "staplers", "post-its", "markers", "dry-eraser", "flowers", "beer" ]
 STORES   = [ "SFO1", "SFO2", "SFO3", "LAX", "NYC", "SEA", "BOS" ]
