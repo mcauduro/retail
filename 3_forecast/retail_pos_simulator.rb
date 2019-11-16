@@ -1,10 +1,10 @@
 require 'date'
 require 'time'
 
-PRODUCTS = [ "staplers", "post-its", "markers", "dry-eraser", "flowers", "beer" ]
-STORES   = [ "SFO1", "SFO2", "SFO3", "LAX", "NYC", "SEA", "BOS" ]
-
 class PointOfSale
+  PRODUCTS = [ "staplers", "post-its", "markers", "dry-eraser", "flowers", "beer" ]
+  STORES   = [ "SFO1", "SFO2", "SFO3", "LAX", "NYC", "SEA", "BOS" ]
+
   # simulates a sale at the register
   def sale_event(time:)
     is_weekend = weekend?(time)
@@ -20,6 +20,7 @@ class PointOfSale
     }
   end
 
+  # generates simulated aggregated sales on an hourly basis
   def aggregate_hourly_sale_events(time:)
     products_sold = rand(1..PRODUCTS.count-1)
 
@@ -37,6 +38,9 @@ class PointOfSale
       time.saturday? || time.sunday?
     end
 end
+
+
+# Main
 
 begin
   point_of_sale = PointOfSale.new
