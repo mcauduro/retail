@@ -52,7 +52,7 @@ begin
   to    = Date.parse("Sep 30, 2019")   # and end date
 
   (from..to).each do |date| # for each day between start date and end date...
-    (10..16).each do |hour|    # for each hour in that day...
+    (10..17).each do |hour|    # for each hour in that day...
       time = Time.parse("#{date.to_s} #{hour}:00:00")
 
       hourly_sale_events = point_of_sale.aggregate_hourly_sale_events(time: time)
@@ -61,9 +61,7 @@ begin
   end
 
   # write the list (array) of sale events to a CSV file
-  open('retail_analytics.csv', 'a') do |f|
-    f.puts sale_events.sort_by { |k| k[0..18] }  # we need events as a timeseries, so sort by timestamp
-  end
+  open('retail_analytics.csv', 'w') { |f| f.puts sale_events }
 
   puts "Done writing events to retail_analytics.csv"
 end
