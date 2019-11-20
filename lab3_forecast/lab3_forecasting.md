@@ -214,10 +214,10 @@ While you can directly use the pre-generated ```retail_analytics.csv``` file to 
 
 To run this code:
 
-cd into the ```3_forecast``` directory
+cd into the ```lab3_forecast``` directory
 
 ```shell
-$ cd retail/3_forecast
+$ cd retail/lab3_forecast
 ```
 
 install bundler (which is used to install ruby dependencies)
