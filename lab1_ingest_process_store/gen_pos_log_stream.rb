@@ -40,7 +40,7 @@ class PosDataGenerator
 
         @kinesis_client.put_records(
           records:      stream_data,
-          stream_name:  'RetailAnalyticsStream5',
+          stream_name:  'RetailAnalyticsStream',
         )
       end
     else     # if not batch mode, send each POS event one by one
@@ -48,7 +48,7 @@ class PosDataGenerator
         event = abnormal? ? pos_event(abnormal: true) : pos_event
 
         @kinesis_client.put_record(
-         stream_name:   'RetailAnalyticsStream5',
+         stream_name:   'RetailAnalyticsStream',
          data:          event.to_json,
          partition_key: "shard_#{rand(1..2)}" # for our purposes, this can be random
         )
