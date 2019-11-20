@@ -1,8 +1,8 @@
 # Lab 3 -- Forecasting
 
-In this lab, we use the retail analytics that we gathered and aggregated to forecast future sales. The simulated data set is aggregated hourly and included in the file ```retail_analytics.csv``` and looks something like below.
+In this lab, we use aggregated retail analytics to forecast future sales. To make this easy, for lab purposes, we will simulate aggregated retail analytics data. This simulated data set is aggregated hourly and included in the file ```retail_analytics.csv``` for convenience and looks something like below.
 
-## Sample Data
+## Simulated Sample Data (aggregated hourly)
 
 Time                | Item     | Quantity | StoreLocation
 --------------------|----------|----------|--------------
@@ -15,6 +15,8 @@ Time                | Item     | Quantity | StoreLocation
 
 As of this writing, Amazon Forecast is supported in 6 regions. Feel free to choose a region of your choice, but please do ensure that you **always** remain within your chosen region, since you won't be able to see the models and predictors you created in one region from another region.
 
+Below are the supported regions:
+
 Region Name              | Region 
 -------------------------|--------
 US East (Ohio)           | us-east-2
@@ -24,9 +26,9 @@ Asia Pacific (Singapore) |	ap-southeast-1
 Asia Pacific (Tokyo)     | ap-northeast-1
 EU (Ireland)             | eu-west-1
 
-For the purposes of this lab, we're using US West (Oregon). This is shown as "Oregon" in the top right-hand corner of the AWS console and is referred to as us-west-2 via CLI or API.
+For the purposes of this lab, we're using US West (Oregon), which you may see in a few screenshots. This is displayed as "Oregon" in the top right-hand corner of the AWS console and is referred to as us-west-2 when invoking the CLI or API.
 
-### Console / GUI
+### Console / GUI Steps
 
 #### Step A
 
@@ -238,14 +240,19 @@ $ ruby retail_pos_simulator.rb
 
 
 <style>
-img {
-    box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 16px 30px 7px rgba(0,0,0,0.56), 0 0 0 0 rgba(0, 0, 0, 0.3);
-    padding: 3px 5px;
-    margin: 18px 0 44px;
-    text-align: center;
-    max-width: 80%;
-    display: block;
-    margin-left: auto;
-    margin-right: auto;
-}
+    img {
+        box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 16px 30px 7px rgba(0,0,0,0.56), 0 0 0 0 rgba(0, 0, 0, 0.3);
+        padding: 3px 5px;
+        margin: 18px 0 44px;
+        text-align: center;
+        max-width: 80%;
+        display: block;
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    table {
+        overflow: auto;
+        display: block;
+    }
 </style>
