@@ -1,4 +1,4 @@
-# Lab 3 -- Forecasting
+# Lab 3 -- Forecast
 
 In this lab, we use aggregated retail analytics to forecast future sales. To make this easy, for lab purposes, we will simulate aggregated retail analytics data. This simulated data set is aggregated hourly and included in the file ```retail_analytics.csv``` for convenience and looks something like below.
 
@@ -13,7 +13,7 @@ Time                | Item     | Quantity | StoreLocation
 
 ## Forecast
 
-As of this writing, Amazon Forecast is supported in 6 regions. Feel free to choose a region of your choice, but please do ensure that you **always** remain within your chosen region, since you won't be able to see the models and predictors you created in one region from another region.
+As of this writing, Amazon Forecast is supported in 6 regions. Feel free to choose a region of your choice, but please do ensure that you **always** remain within your chosen region, since you won't be able to see the models and predictors you created in one region from another region. Ideally, remain within the same region you chose for Labs 1 and 2.
 
 Below are the supported regions:
 
