@@ -15,7 +15,7 @@ COL_timestamp | store\_id | workstation\_id | operator\_id | item\_id | quantity
 
 To ingest data, we'll first set up an Amazon Kinesis Data Stream to which we can send our generated data. To set this up:
 
-### Step A
+### Step A - Create Kinesis Data Stream
 
 1. Point browser to https://console.aws.amazon.com/kinesis
 
@@ -27,9 +27,25 @@ To ingest data, we'll first set up an Amazon Kinesis Data Stream to which we can
 
    ![Create Streams](images/create_streams.png)
    
-3. Click 'Create Kinesis Streams'. This will take a few 10 seconds after which, the Kinesis Data Stream should have been created.
+3. Click 'Create Kinesis Streams'. This will take a few 10 seconds after which, the Kinesis Data Stream should have been created. You should see a success message like this:
 
-#### Step B
+   ![Stream Creation Success](images/data_stream_created.png)
+
+
+#### Step B - Run Script to Generate Data
+
+Since we've created the Kinesis Data Stream to which we can send data to, we'll start running our simulation script that generates the PoS data and send that to stream.
+
+To run, switch to the CLI and execute:
+
+```shell
+ruby gen_pos_log_stream.rb
+```
+
+Wait for the script to start running and then switch back to the AWS console and continue with the steps below.
+
+
+#### Step C - Create Kinesis Analytics SQL App
 
 We will now create a Kinesis Analytics SQL App that we will connect to the above Kinesis Data Stream to allow us to *process* the data we ingest.
 
@@ -53,25 +69,22 @@ We will now create a Kinesis Analytics SQL App that we will connect to the above
 
    ![Choose data stream page2](images/connect_streaming_data_page2.png)   
    
-6. Discover Schema. 
+6. Now look at the discovered schema -- the column names and the associated data types. If you look carefully, you'll see that Kinesis Data Analytics has automatically discovered most of the schema types correctly *except* one -- the very first column, ```COL_timestamp```. This column has been classified as ```VARCHAR``` instead of ```TIMESTAMP```. (We deliberately introduced an uncommon ```TIMESTAMP``` format to force this). However, these situations this is easy to fix.
 
    ![Discover Schema](images/connect_streaming_data_schema.png)
    
-7. Click on 'Save and continue'   
-      
+7. To fix the schema, click on the 'Edit schema' button. Against ```COL_timestamp``` (the first under 'Column name'), click on the drop-down and choose ```TIMESTAMP``` as the 'Column type' instead.
+   
+   ![Edit Schema](images/edit_schema.png)
+   
+8. Click on 'Save schema and update stream samples'. This will take a few 10s, but once complete, and the stream samples are updated, scroll down and you will notice the corrected schema as shown:
 
-#### Step C
+   ![Edited Schema](images/edited_schema.png)   
+   
+9. Click on 'Exit (done)' to exit the screen
 
-Since we've created the Kinesis Data Stream to which we can send data to, we'll start running our simulation script that generates the PoS data and send that to stream.
-
-To run, switch to the CLI and execute:
-
-```shell
-ruby gen_pos_log_stream.rb
-```
-
-Wait for the script to start running and then switch back to the AWS console and continue with the steps below.
-
+   ![Exit Schema Edit](images/exit_schema_update.png)
+   
 
 #### Step D
 
@@ -81,15 +94,89 @@ In this step, we'll configure the Kinesis Data Analytics SQL to process the data
 
    ![Go to SQL editor](images/go_to_sql_editor.png)
    
-2. In the ensuing dialog box, click 'Yes, start application'. This will take about 30-90 seconds, after which we can edit the SQL.
+2. If you see an ensuing dialog box, click 'Yes, start application'. This will take at least a few 10s of seconds, after raw data will start streaming in.
 
-   ![Start Application](images/yes_start_app.png)   
+   ![Start Application](images/yes_start_app_dialog.png)   
    
 3. After the Kinesis Data Analytics application starts up successfully, you should see the data start to stream in.
 
    ![Real Time Analytics Source Data](images/real_time_analytics.png)
    
+
+#### Step E
+
+Here, we'll add some streaming SQL to process ingested PoS data on the fly.
+ 
+1. Copy the streaming SQL from the file ```retail_pos_analytics.sql``` into the SQL editor window. The SQL is also provided here for convenience
+
+   ```sql
+   CREATE OR REPLACE STREAM "RETAIL_KPI_ANOMALY_DETECTION_STREAM" (
+  "store_id"              varchar(8),
+  "workstation_id"        varchar(8),
+  "operator_id"           varchar(16),
+  "item_id"               varchar(16),
+  "retail_kpi_metric"     integer,
+  "ANOMALY_SCORE"         double,
+  "ANOMALY_EXPLANATION"   varchar(512)
+);
+
+    -- Compute an anomaly score for each record in the input stream
+    CREATE OR REPLACE PUMP "RETAIL_KPI_ANOMALY_DETECTION_STREAM_PUMP" AS
+    INSERT INTO "RETAIL_KPI_ANOMALY_DETECTION_STREAM"
+      SELECT STREAM "store_id",
+                    "workstation_id",
+                    "operator_id",
+                    "item_id",
+                    "retail_kpi_metric",
+                    ANOMALY_SCORE,
+                    ANOMALY_EXPLANATION
+      FROM TABLE(RANDOM_CUT_FOREST_WITH_EXPLANATION (
+                     CURSOR( SELECT STREAM "store_id",
+                                            "workstation_id",
+                                            "operator_id",
+                                            "item_id",
+                                            "retail_kpi_metric"
+                             FROM "SOURCE_SQL_STREAM_001"), 100, 256, 100000, 1, false)
+      );
+    
+    
+    CREATE OR REPLACE STREAM "DESTINATION_STREAM" (
+      "COL_timestamp"               timestamp,
+      "store_id"                    varchar(8),
+      "workstation_id"              varchar(8),
+      "operator_id"                 varchar(16),
+      "item_id"                     varchar(16),
+      "quantity"                    integer,
+      "regular_sales_unit_price"    real,
+      "retail_price_modifier"       real,
+      "retail_kpi_metric"           integer,
+      "ANOMALY_SCORE"               double,
+      "ANOMALY_EXPLANATION"         varchar(512)
+    );
+    
+    CREATE OR REPLACE PUMP "DESTINATION_STREAM_PUMP" AS
+    INSERT INTO "DESTINATION_STREAM"
+      SELECT STREAM "SOURCE_STREAM"."COL_timestamp",
+                    "SOURCE_STREAM"."store_id",
+                    "SOURCE_STREAM"."workstation_id",
+                    "SOURCE_STREAM"."operator_id",
+                    "SOURCE_STREAM"."item_id",
+                    "SOURCE_STREAM"."quantity",
+                    "SOURCE_STREAM"."regular_sales_unit_price",
+                    "SOURCE_STREAM"."retail_price_modifier",
+                    "SOURCE_STREAM"."retail_kpi_metric",
+                    "ANOMALY_STREAM"."ANOMALY_SCORE",
+                    "ANOMALY_STREAM"."ANOMALY_EXPLANATION"
+      FROM "SOURCE_SQL_STREAM_001" AS "SOURCE_STREAM"
+      JOIN "RETAIL_KPI_ANOMALY_DETECTION_STREAM" AS "ANOMALY_STREAM"
+        ON  "SOURCE_STREAM"."store_id"       = "ANOMALY_STREAM"."store_id"
+        AND "SOURCE_STREAM"."workstation_id" = "ANOMALY_STREAM"."workstation_id"
+        AND "SOURCE_STREAM"."operator_id"    = "ANOMALY_STREAM"."operator_id"
+        AND "SOURCE_STREAM"."item_id"        = "ANOMALY_STREAM"."item_id";
    
+   ```
+
+   ![Edited SQL]()
 
 ---
 
