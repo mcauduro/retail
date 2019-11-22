@@ -1,3 +1,8 @@
+--
+-- Creates a stream with a subset of the data that we are ingesting,
+-- which is our way of ensuring that we only run anomaly detection on
+-- the numeric columns that we pick.
+--
 CREATE OR REPLACE STREAM "RETAIL_KPI_ANOMALY_DETECTION_STREAM" (
   "store_id"              varchar(8),
   "workstation_id"        varchar(8),
@@ -8,7 +13,11 @@ CREATE OR REPLACE STREAM "RETAIL_KPI_ANOMALY_DETECTION_STREAM" (
   "ANOMALY_EXPLANATION"   varchar(512)
 );
 
--- Compute an anomaly score for each record in the input stream
+--
+-- Compute an anomaly score for each record in the input stream. The
+-- anomaly detection algorithm considers ALL numeric columns and
+-- ignores the rest.
+--
 CREATE OR REPLACE PUMP "RETAIL_KPI_ANOMALY_DETECTION_STREAM_PUMP" AS
 INSERT INTO "RETAIL_KPI_ANOMALY_DETECTION_STREAM"
   SELECT STREAM "store_id",
@@ -27,7 +36,11 @@ INSERT INTO "RETAIL_KPI_ANOMALY_DETECTION_STREAM"
                          FROM "SOURCE_SQL_STREAM_001"), 100, 256, 100000, 1, false)
   );
 
-
+--
+-- Create a destination stream that combines (JOINs) all the values in
+-- the source stream along with the anomaly values in the anomaly stream
+-- which we will then store for historic records.
+--
 CREATE OR REPLACE STREAM "DESTINATION_STREAM" (
   "COL_timestamp"               timestamp,
   "store_id"                    varchar(8),

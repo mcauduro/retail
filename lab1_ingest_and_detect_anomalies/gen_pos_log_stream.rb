@@ -1,5 +1,5 @@
+require 'yaml'
 require 'aws-sdk'
-require 'faker'
 
 class PosDataGenerator
   STORE_LOCATIONS = [ "sfo", "lax", "san", "jfk", "iad", "ord", "sea", "bos" ]
@@ -19,7 +19,7 @@ class PosDataGenerator
       loop do
         events = []
 
-        20.times do
+        30.times do
           events << pos_event
 
           if abnormal?
@@ -27,7 +27,7 @@ class PosDataGenerator
           end
         end
 
-        puts "\n\nEvents:\n#{events}"
+        puts "Sent #{events.size} events..."
         stream_data = []
         events.each do |event|
           stream_datum = {
@@ -68,7 +68,7 @@ class PosDataGenerator
     jul_01 = Time.parse("Jul 1, 2019 09:00:00")
     sep_30 = Time.parse("Sep 30, 2019 17:00:00")
 
-    retail_kpi_metric = abnormal ? rand(1..10) : rand(70..95)
+    retail_kpi_metric = abnormal ? rand(1..10) : rand(80..95)
 
     {
         timestamp:                rand(jul_01..sep_30).strftime("%Y-%m-%dT%H:%M:%S.0"),

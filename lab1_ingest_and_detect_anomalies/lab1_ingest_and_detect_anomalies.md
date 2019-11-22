@@ -1,4 +1,4 @@
-# Lab 1 -- Ingest, Process, and Store Data
+# Lab 1 -- Ingest and Detect Anomalies
 
 In this lab, we will generate simulated POS data that we will ingest as it happens. We will also process this data in near real-time and detect anomalies on the fly. And finally, we will store this data, along with the generated anomaly scores and associated explanations (*why a value was considered anomalous along with attribution scores that show which specific column caused it to be flagged as an anomaly*) for our records and historic analysis.
 
@@ -32,7 +32,7 @@ To ingest data, we'll first set up an Amazon Kinesis Data Stream to which we can
    ![Stream Creation Success](images/data_stream_created.png)
 
 
-#### Step B - Run Script to Generate Data
+### Step B - Run Script to Generate Data
 
 Since we've created the Kinesis Data Stream to which we can send data to, we'll start running our simulation script that generates the PoS data and send that to stream.
 
@@ -45,7 +45,7 @@ ruby gen_pos_log_stream.rb
 Wait for the script to start running and then switch back to the AWS console and continue with the steps below.
 
 
-#### Step C - Create Kinesis Analytics SQL App
+### Step C - Create Kinesis Analytics SQL App
 
 We will now create a Kinesis Analytics SQL App that we will connect to the above Kinesis Data Stream to allow us to *process* the data we ingest.
 
@@ -86,7 +86,7 @@ We will now create a Kinesis Analytics SQL App that we will connect to the above
    ![Exit Schema Edit](images/exit_schema_update.png)
    
 
-#### Step D
+### Step D
 
 In this step, we'll configure the Kinesis Data Analytics SQL to process the data, that we're now ingesting, on the fly.
 
@@ -103,7 +103,7 @@ In this step, we'll configure the Kinesis Data Analytics SQL to process the data
    ![Real Time Analytics Source Data](images/real_time_analytics.png)
    
 
-#### Step E
+### Step E
 
 Here, we'll add some streaming SQL to process ingested PoS data on the fly.
  
@@ -176,7 +176,27 @@ Here, we'll add some streaming SQL to process ingested PoS data on the fly.
    
    ```
 
-   ![Edited SQL]()
+   Paste the above SQL into the SQL editor window:
+   
+   ![Edited SQL](images/sql_editor.png)
+   
+2. Click on 'Save and run SQL'. 
+
+3. You will need to wait for a few 10 seconds for the results to start streaming. Once the results start streaming in, under the 'Real-time analytics' tab, you will notice multiple streams. 
+
+   The ```RETAIL_KPI_ANOMALY_DETECTION_STREAM``` is the result of the 
+
+   See the docs here for a more detailed explanation: https://docs.aws.amazon.com/kinesisanalytics/latest/dev/streaming-sql-concepts.html
+
+   | TODO: Explain the anomaly detection part |
+| --- |   
+
+3. Update the streaming SQL.
+
+   | TODO: Include all 3 columns and re-run SQL |
+| --- |
+
+
 
 ---
 

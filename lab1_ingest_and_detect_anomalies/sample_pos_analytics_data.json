@@ -1,0 +1,12 @@
+{
+  "COL_timestamp": "2019-07-10 19:40:08.000",
+  "store_id": "store_25",
+  "workstation_id": "pos_5",
+  "operator_id": "cashier_148",
+  "item_id": "item_6888",
+  "quantity": 4,
+  "regular_sales_unit_price": 76.94,
+  "retail_price_modifier": 5.48,
+  "retail_kpi_metric": 83,
+  "ANOMALY_SCORE": 0.7964010591826596
+}
