@@ -51,8 +51,8 @@ CREATE OR REPLACE STREAM "DESTINATION_STREAM" (
   "regular_sales_unit_price"    real,
   "retail_price_modifier"       real,
   "retail_kpi_metric"           integer,
-  "ANOMALY_SCORE"               double,
-  "ANOMALY_EXPLANATION"         varchar(512)
+  "ANOMALY_SCORE"               double
+  --"ANOMALY_EXPLANATION"         varchar(512)
 );
 
 CREATE OR REPLACE PUMP "DESTINATION_STREAM_PUMP" AS
@@ -66,8 +66,8 @@ INSERT INTO "DESTINATION_STREAM"
                 "SOURCE_STREAM"."regular_sales_unit_price",
                 "SOURCE_STREAM"."retail_price_modifier",
                 "SOURCE_STREAM"."retail_kpi_metric",
-                "ANOMALY_STREAM"."ANOMALY_SCORE",
-                "ANOMALY_STREAM"."ANOMALY_EXPLANATION"
+                "ANOMALY_STREAM"."ANOMALY_SCORE"
+                --"ANOMALY_STREAM"."ANOMALY_EXPLANATION"
   FROM "SOURCE_SQL_STREAM_001" AS "SOURCE_STREAM"
   JOIN "RETAIL_KPI_ANOMALY_DETECTION_STREAM" AS "ANOMALY_STREAM"
     ON  "SOURCE_STREAM"."store_id"       = "ANOMALY_STREAM"."store_id"
