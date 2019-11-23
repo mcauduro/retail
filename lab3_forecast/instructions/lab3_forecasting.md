@@ -210,7 +210,7 @@ Once the predictor is trained, we'll generate forecasts.
 
 ## Running the Code <span style="color:red;">(OPTIONAL)</color>
 
-While you can directly use the pre-generated ```retail_analytics.csv``` file to generate forecasts, you can also modify the ```retail_pos_simulator.rb``` script that generates this file and modify it to generate a new ```retail_analytics.csv``` file to see differences in forecast based on changes you made. 
+While you can directly use the pre-generated ```retail_analytics.csv``` file to generate forecasts, you can also modify the ```retail_pos_simulator.rb``` Ruby script (or  ```retail_pos_simulator.py``` in Python)  that generates this file and modify it to generate a new ```retail_analytics.csv``` file to see differences in forecast based on changes you made. 
 
 To run this code:
 
