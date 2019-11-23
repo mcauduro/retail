@@ -2,6 +2,8 @@ require 'yaml'
 require 'aws-sdk'
 
 class PosDataGenerator
+  STREAM_NAME = 'RetailDataStream'
+
   STORE_LOCATIONS = [ "sfo", "lax", "san", "jfk", "iad", "ord", "sea", "bos" ]
 
   def initialize
@@ -40,7 +42,7 @@ class PosDataGenerator
 
         @kinesis_client.put_records(
           records:      stream_data,
-          stream_name:  'RetailAnalyticsStream',
+          stream_name:  STREAM_NAME,
         )
       end
     else     # if not batch mode, send each POS event one by one
@@ -48,7 +50,7 @@ class PosDataGenerator
         event = abnormal? ? pos_event(abnormal: true) : pos_event
 
         @kinesis_client.put_record(
-         stream_name:   'RetailAnalyticsStream',
+         stream_name:   STREAM_NAME,
          data:          event.to_json,
          partition_key: "shard_#{rand(1..2)}" # for our purposes, this can be random
         )
