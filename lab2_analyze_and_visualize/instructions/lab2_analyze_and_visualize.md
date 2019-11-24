@@ -213,7 +213,13 @@ We have successfully configured a Kinesis Data Firehose Delivery Stream and we'r
    ruby gen_pos_log_stream.rb
    ```   
    
-6.    
+   
+6. Open up another browser tab and point it to https://console.aws.amazon.com/s3 and navigate to the bucket that you created. Click into this bucket and wait at least a minute (since we configured Kinesis Firehose's buffer as 60 seconds or 1 MB -- whichever is hit first) and refresh again. You should now see this bucket start to fill up with data.
+
+   ![Data in S3](images/s3_data.png)
+   
+
+### Step C - Crawl S3 Data with Glue
 
 ---
 
