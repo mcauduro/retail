@@ -185,7 +185,7 @@ When you exit this screen, it should automatically close the tab and put you rig
    ![Connect to Firehose Destination](images/connect_to_firehose_destination.png)
 
 
-### Step B
+### Step C 
 
 We have successfully configured a Kinesis Data Firehose Delivery Stream and we're now going to configure our Kinesis Data Analytics  to use this as its destination.
 
@@ -213,13 +213,148 @@ We have successfully configured a Kinesis Data Firehose Delivery Stream and we'r
    ruby gen_pos_log_stream.rb
    ```   
    
+   Wait for the script to start...
+   
    
 6. Open up another browser tab and point it to https://console.aws.amazon.com/s3 and navigate to the bucket that you created. Click into this bucket and wait at least a minute (since we configured Kinesis Firehose's buffer as 60 seconds or 1 MB -- whichever is hit first) and refresh again. You should now see this bucket start to fill up with data.
 
    ![Data in S3](images/s3_data.png)
-   
+      
 
-### Step C - Crawl S3 Data with Glue
+### Step E - Crawl S3 Data with AWS Glue
+
+Open a new tab in your browser and point it to https://console.aws.amazon.com/glue
+
+1. Click on 'Add database'.
+
+   ![Add database](images/glue_0_add_database.png)
+   
+2. Give this crawler a descriptive name and click 'Next'.
+
+   ![Name the Crawler](images/glue_1_add_crawler_info.png)
+   
+3. For crawler source, choose 'Data stores' (selected by default) and click 'Next'.
+
+   ![Choose Crawler Source](images/glue_2_specify_crawler_source.png)
+   
+4. Add a data store by specifying the S3 bucket name into which data is being ingested and click 'Next'.
+
+   ![Add Data Store](images/glue_3_add_data_store.png)  
+   
+5. For 'Add another data store' screen, leave the default values as-is and click 'Next'.
+
+   ![Add Another Data Store](images/glue_3.5_choose_another_datastore.png)   
+   
+6. For 'IAM role' enter a unique name and click 'Next'.  
+
+   ![Choose IAM Role](images/glue_4_choose_iam.png) 
+   
+7. For 'Frequency', leave the choice as 'Run on demand' and click on 'Next'.
+
+   ![Schedule Crawl Frequency](images/glue_5_crawl_scheduler.png)   
+   
+8. Under 'Configure the crawler's output', click on 'Add Databse'
+
+   ![Configure Crawler Output](images/glue_6_configure_crawl_output.png)    
+   
+9. In the 'Add database' dialog box, for 'Database name' enter 'retail_analytics_db' (or any name you like, but just remember to use this value when querying) and click on 'Create'
+
+   ![Add Database](images/glue_7_database_name.png)
+   
+10. Click on 'Next'
+
+11. Click 'Finish'
+
+    ![Finish](images/glue_8_finish.png)    
+    
+12. You will see a success flash message with an option to run the newly created crawler right away. DO NOT RUN IT YET! (but, f you already clicked on it, well, no harm)
+
+
+### Step F - Update Glue IAM Role with Permissions to Access S3
+
+1. Open up a new browser tab and point it at https://console.aws.amazon.com/iam.
+
+2. Click on 'Roles' in the left-hand pane (see screenshot below #3)
+
+3. And then type 'Glue' in the Search box, which should bring up a role named 'AWSGlueServiceRole-[SOME\_UNIQUE\_IDENTIFIER]' that you configured in [Step E](Step-E) #6. 
+
+   Click on it.
+
+   ![Update Glue Service Linked Role](images/iam_glue_role_1.png)   
+   
+4. In the subsequent screen, click again on the Glue service linked role named 'AWSGlueServiceRole-[SOME\_UNIQUE\_IDENTIFIER]'
+
+   ![Click Glue Service Linked Role](images/iam_glue_click_service_role_2.png)   
+   
+5. Click on 'Edit Policy'
+
+   ![Edit Glue Service Linked Role Policy](images/iam_glue_role_edit_policy_3.png)   
+   
+6. Click on 'JSON'.
+
+   ![](images/iam_glue_edited_role_4.png)   
+   
+7. Copy paste the below permissions policy. 
+
+   **NOTE:** Replace YOUR\_S3\_BUCKET\_NAME with what you used so that Glue may access **YOUR** S3 bucket.
+
+   ```json
+    "Statement": [
+        {
+            "Sid": "VisualEditor0",
+            "Effect": "Allow",
+            "Action": [
+                "s3:PutObject",
+                "s3:GetObject"
+            ],
+            "Resource": [
+                "arn:aws:s3:::YOUR_S3_BUCKET_NAME/prod-retail-data*"
+            ]
+        }
+    ]
+}   
+   ```   
+   
+8. Click on 'Review policy'
+
+9. Click on 'Save changes'
+
+   ![](images/iam_glue_role_save_changes_5.png)   
+   
+10. Close this browser tab.   
+
+12. You should have now returned to the previous tab you were on, when you had just finished creating a Glue crawler. Now Click on 'Run it now?' to crawl your S3 data.
+
+   This will take at least 1-2 mins from start to finish. Wait for the crawler to complete running (click on the refresh icon in the top-right a few times).
+
+   ![Run Crawler](images/glue_9_run_it_now.png)    
+   
+13. To verify that the Glue crawler has crawled your S3 data, has automatically discovered the underlying schema, and has created a table on your behalf, click on 'Tables' on the left-hand pane.
+
+14. Enter 'retail_analytics_db' in the 'Search' field to narrow results down (if necessary)
+
+    ![](images/glue_view_database_tables.png)
+    
+    You should see a new table created in ```retail_analytics_db```. 
+    
+
+### Step G - Query the Table
+
+We will now query this table from Athena to verify.
+
+1. Open Amazon Athena by pointing your browser tab at https://console.aws.amazon.com/athena
+
+2. Click on the 'Databases' drop-down and choose 'retail-analytics-db'
+
+3. In it, you should see the table 'prod_retail_data'. Click on the dotted link beside it to open up multiple options.
+
+4. Click on 'Preview table' to query it's contents.
+
+   ![](images/athena.png)
+   
+5. Feel free to experiment by writing any Hive compatible query.   
+    
+   ![](images/athena_experiment.png)
 
 ---
 
