@@ -224,7 +224,11 @@ Once the predictor is trained, we'll generate forecasts.
 
    ![Create Forecast Success](images/generate_forecast_success.png)
 
-   This step also takes around 10 to 15mins, but is shorter than than training a predictor. Let's jump to Lab 2 and pick this up then.
+
+This step, though shorter than training a predictor, should still take around 10 to 15mins.  
+   
+| Given the time required for this step to complete, Let's jump to Lab 2 and pick this back up when complete.|
+|---|
 
 
 
