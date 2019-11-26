@@ -7,6 +7,8 @@ class PosDataGenerator
   STORE_LOCATIONS = [ "sfo", "lax", "san", "jfk", "iad", "ord", "sea", "bos" ]
 
   def initialize
+    # In a prod setting, it is MUCH better to use Cognito based
+    # temporary credentials instead of long-lived AWS credentials.
     creds          = YAML.load(File.read 'config/aws.yml')
     credentials    = Aws::Credentials.new(creds['access_key_id'], creds['secret_access_key'])
 
