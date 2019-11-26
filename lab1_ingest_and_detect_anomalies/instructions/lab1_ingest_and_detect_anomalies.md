@@ -68,6 +68,23 @@ gem install bundler
 bundle install
 ```
 
+```shell
+mkdir config
+cd config
+touch aws.yml
+```
+
+Replace ```ACCESS_KEY_ID``` and ```SECRET_ACCESS_KEY``` with what you copied into your notepad at the beginning and then run:
+
+```shell
+echo "access_key_id: [ACCESS_KEY_ID]" >> aws.yml
+echo "secret_access_key: [SECRET_ACCESS_KEY]" >> aws.yml
+```
+
+```shell
+cd ..
+```
+
 Then execute the script
 
 ```shell
@@ -81,9 +98,17 @@ Wait for the script to start running and then switch back to the AWS console to 
 
 We will now create an Amazon Kinesis Data Analytics App (SQL-based) that we will connect to the above Kinesis Data Stream to allow us to *process* the data we are ingesting.
 
-1. Click on 'Data Analytics' in the left hand tab.
-
+1. Click on 'Data Analytics' in the left hand tab. 
+   
    ![Kinesis Analytics](images/kinesis_analytics_tab.png)   
+
+2. You may see either the screen above or the one below, depending on whether or not you have already created an analytics app in the past.
+
+   Click on 'Create Kinesis stream' or 'Create application' depending on the screen.
+
+   ![Kinesis Analytics Splash](images/kinesis_analytics_get_started.png)
+   
+   
    
 2. For 'Application name', enter something descriptive. The 'Description' is optional. Leave the rest of the options as-is.
 
@@ -196,7 +221,7 @@ Here, we'll add some streaming SQL to process ingested PoS data on the fly. We'l
       "regular_sales_unit_price"    real,
       "retail_price_modifier"       real,
       "retail_kpi_metric"           integer,
-      "ANOMALY_SCORE"               double,
+      "ANOMALY_SCORE"               double
       --"ANOMALY_EXPLANATION"         varchar(512)
     );
     
@@ -211,7 +236,7 @@ Here, we'll add some streaming SQL to process ingested PoS data on the fly. We'l
                     "SOURCE_STREAM"."regular_sales_unit_price",
                     "SOURCE_STREAM"."retail_price_modifier",
                     "SOURCE_STREAM"."retail_kpi_metric",
-                    "ANOMALY_STREAM"."ANOMALY_SCORE",
+                    "ANOMALY_STREAM"."ANOMALY_SCORE"
                     --"ANOMALY_STREAM"."ANOMALY_EXPLANATION"
       FROM "SOURCE_SQL_STREAM_001" AS "SOURCE_STREAM"
       JOIN "RETAIL_KPI_ANOMALY_DETECTION_STREAM" AS "ANOMALY_STREAM"
@@ -219,6 +244,7 @@ Here, we'll add some streaming SQL to process ingested PoS data on the fly. We'l
         AND "SOURCE_STREAM"."workstation_id" = "ANOMALY_STREAM"."workstation_id"
         AND "SOURCE_STREAM"."operator_id"    = "ANOMALY_STREAM"."operator_id"
         AND "SOURCE_STREAM"."item_id"        = "ANOMALY_STREAM"."item_id";
+
    ```
 
    Paste the above SQL into the SQL editor window.
@@ -361,6 +387,18 @@ Now we'll slightly modify the above streaming SQL and compare the results.
 
    | Results Explained: In the ```ANOMALY_EXPLANATION``` column, this time, you'll notice the presence of ```quantity```,```retail_price_modifier```, and ```regular_sales_unit_price```, in addition to ```retail_kpi_metric```. The algorithm is now using all of these numeric values to determine the anomaly score of a record. So, you get to cherry pick the values that you think are most relevant and want the algorithm to score. |
 | --- |   
+
+### Recap
+
+To Recap, we 
+
+* Created an Amazon Kinesis Data stream to ingest large volumes of data
+* Ran a simulation script to generate PoS data and send to Kinesis
+* Created an Amazon Kinesis Analytics application to receive data from the Kinesis Data stream and detect anomalies
+
+Before jumping into Lab 2, now would be a good time to jump back to Lab 3 and check up on Amazon Forecast predictor training, which should be done.
+
+Continue on Lab 3,Step E to generate forecasts.
 
 ---
 
