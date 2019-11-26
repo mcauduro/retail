@@ -43,7 +43,7 @@ If you're coming here from Lab 1, you can continue where you're browser already 
    
    ![Configure Lambda Firehose Processor - Part 1](images/configure_lambda_firehose_processor_page1.png)
    
-9. Scroll down further to where you see the Lambda source code. Leave it as-is (it is not editable in this screen) and click on 'Create function'
+9. Scroll down further to where you see the Lambda source code. Leave it as-is (**the source code is NOT editable in this screen**) and click on 'Create function'
 
    ![Configure Lambda Firehose Processor - Part 2](images/configure_lambda_firehose_processor_page2.png)  
    
