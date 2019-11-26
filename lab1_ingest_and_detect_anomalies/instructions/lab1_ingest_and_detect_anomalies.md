@@ -22,10 +22,18 @@ To ingest data, we'll first set up an Amazon Kinesis Data Stream to which we can
    Note the region that you are defaulted to, which in the case of the screenshot below is 'Oregon'. While you are free to choose any supported region you prefer, we strongly recommend choosing Oregon for the purposes of this workshop.
    
    ![Default Region](images/kinesis_region.png)
+   
+1. Click on 'Get Started'
+
+   ![Get Started with Kinesis](images/kinesis_get_started.png)
+   
+1. Click on 'Create data stream'
+
+   ![Create Data Stream](images/kinesis_create_data_stream.png)   
 
 2. For 'Kinesis stream name', give it a descriptive name such as 'RetailDataStream' for example. (note the restrictions in what characters can be used for the name right below the textbox).
 
-   You're free to name this stream anything you prefer, but if you change it, be sure to also change line no. 5 in the ```gen_pos_log_stream.rb``` script in the ```/src``` directory and use the same name for ```STREAM_NAME```
+   **Note:** You're free to name this stream anything you prefer, but if you change it, be sure to also change line no. 5 in the ```gen_pos_log_stream.rb``` script in the ```/src``` directory and use the same name for ```STREAM_NAME```
    
    ```
    STREAM_NAME = 'RetailDataStream'
@@ -46,10 +54,18 @@ To ingest data, we'll first set up an Amazon Kinesis Data Stream to which we can
 
 Since we've created the Kinesis Data Stream to which we can send data to, we'll start running our simulation script that generates the PoS data and send that data to the stream that we just created.
 
-To run this script, switch to the CLI and from the root directory:
+To run this script, switch to the browser tab where you have the Cloud9 IDE open. Go to the Cloud9 IDE terminal and from the root workshop directory ```/retail``` run:
 
 ```shell
 cd lab1_ingest_and_detect_anomalies/src
+```
+
+```shell
+gem install bundler
+```
+
+```shell
+bundle install
 ```
 
 Then execute the script
