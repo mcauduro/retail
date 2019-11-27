@@ -6,7 +6,7 @@ In this lab, we will store ingested data (data we're ingesting in Lab 1) into Am
 
 If you're coming here from Lab 1, you can continue where you're browser already is. 
 
-```### OPTIONAL STEPs:
+### OPTIONAL STEPs:
 
 If you didn't close your browser tab in Lab 1, you can skip this section and jump to [Step A](Step-A) below. But if you did, follow the next few steps to get back to where you were. 
 
