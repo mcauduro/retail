@@ -378,7 +378,7 @@ To recap, what we did was that we
 * Used AWS Glue to crawl data in Amazon S3 and auto-discover schema
 * Used Amazon Athena to query and gain insights into collected data
 
-You can now jumpt to Lab 3 to lookup a forecast.
+You can now jumpt to [Lab 3](../../lab3_forecast/instructions/lab3_forecast.md) (Step F) to lookup a forecast.
 
 ---
 
