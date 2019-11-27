@@ -4,7 +4,13 @@ In this lab, we will store ingested data (data we're ingesting in Lab 1) into Am
 
 ## Console / GUI
 
-If you're coming here from Lab 1, you can continue where you're browser already is. If not, point your browser to https://console.aws.amazon.com/kinesisanalytics/home. 
+If you're coming here from Lab 1, you can continue where you're browser already is. 
+
+**OPTIONAL:** If you closed your browser, open a new tab and point it to https://console.aws.amazon.com/kinesisanalytics/home. 
+
+Then click on the Kinesis Analytics Data Stream that we just created.
+
+![Open Kinesis Data Stream](images/kinesis_open_data_streams.png)
 
 ### Step A
 
