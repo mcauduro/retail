@@ -6,7 +6,7 @@ In this lab, we will store ingested data (data we're ingesting in Lab 1) into Am
 
 If you're coming here from Lab 1, you can continue where you're browser already is. 
 
-### OPTIONAL STEPs:
+### CONDITIONAL/OPTIONAL STEPs:
 
 If you didn't close your browser tab in Lab 1, you can skip this section and jump to [Step A](Step-A) below. But if you did, follow the next few steps to get back to where you were. 
 
@@ -117,7 +117,7 @@ If you didn't close your browser tab in Lab 1, you can skip this section and jum
    ![Create S3 Destination](images/create_s3_destination.png)
 
 
-18. All S3 bucket names, regardless who created them, need to be globally unique. Something string that is *unique to you* appended or prepended to ```retail_analytics``` should help. For example ```[COMPANY_NAME]_[SOME_UNIQUE_IDENTIFIER]_retail_analytics``` has a higher likelyhood of being unique. 
+18. All S3 bucket names, regardless who created them, need to be globally unique. Some string that is *unique to you* appended or prepended to ```retail_analytics``` should help. For example ```[COMPANY_NAME]_[SOME_UNIQUE_IDENTIFIER]_retail_analytics``` has a higher likelyhood of being unique. 
 
    ![Create S3 Bucket](images/create_s3_bucket_dialog.png)
 
@@ -194,7 +194,7 @@ We have successfully configured a Kinesis Data Firehose Delivery Stream and we'r
 
    ![Go to SQL Results](images/go_to_sql_results_2.png)
 
-5. **OPTIONAL** Check that your script is still running. If not, run it now.
+5. **CONDITIONAL Step** Check that your script is still running. If not, run it now.
 
    ```shell
    cd lab1_ingest_and_detect_anomalies/src
@@ -220,7 +220,7 @@ Open a new tab in your browser and point it to https://console.aws.amazon.com/gl
 
    ![Get Started with Glue](images/glue_get_started.png)
 
-1. Click on 'Add database'.
+1. Click on 'Add tables using a crawler'.
 
    ![Add database](images/glue_0_add_table.png)
    
@@ -262,7 +262,7 @@ Open a new tab in your browser and point it to https://console.aws.amazon.com/gl
 
     ![Finish](images/glue_8_finish.png)    
     
-12. You will see a success flash message with an option to run the newly created crawler right away. DO NOT RUN IT YET! (but, f you already clicked on it, well, no harm)
+12. You will see a success flash message with an option to run the newly created crawler right away. DO NOT RUN IT YET! (but, if you already clicked on it, well, no harm)
 
 
 ### Step D - Update Glue IAM Role with Permissions to Access S3
@@ -352,16 +352,13 @@ We will now query this table from Athena to verify.
 
    ![](images/athena.png)
    
-   | TODO Configure 'Output Location' for Athena Workgroup. Or this step will error out.|
-   |---|
-   
 5. If this is a new AWS Account or if you've never used Amazon Athena before, this will result in an error like so:
 
    Click on 'set up a query result location in Amazon S3'
 
    ![](images/athena_query_result_location_error.png)   
    
-6. For 'Query rsult location' enter a unique S3 bucket.
+6. For 'Query result location' enter a unique S3 bucket.
 
 7. Click 'Save'.
 
@@ -372,6 +369,16 @@ We will now query this table from Athena to verify.
 5. Feel free to experiment by writing any Hive compatible query.   
     
    ![](images/athena_experiment.png)
+   
+### Recap
+
+To recap, what we did was that we
+
+* Crated a Kinesis Data Firehose resource to store data in Amazon S3
+* Used AWS Glue to crawl data in Amazon S3 and auto-discover schema
+* Used Amazon Athena to query and gain insights into collected data
+
+You can now jumpt to Lab 3 to lookup a forecast.
 
 ---
 
