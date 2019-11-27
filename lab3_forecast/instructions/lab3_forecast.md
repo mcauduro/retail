@@ -196,7 +196,7 @@ Just to recap, what we've done so far is:
 * Imported this dataset into Forecast
 * And launched a job to train a predictor on this data.
 
-At this point, we'll jump to Lab 1 and pick this thread back up when the training is done.
+At this point, we'll jump to [Lab 1](../../lab1_ingest_and_detect_anomalies/instructions/lab1_ingest_and_detect_anomalies.md) and pick this thread back up when the training is done.
    
 
    
@@ -225,9 +225,9 @@ Once the predictor is trained, we'll generate forecasts.
    ![Create Forecast Success](images/generate_forecast_success.png)
 
 
-This step, though shorter than training a predictor, should still take around 10 to 15mins.  
+ 
    
-| Given the time required for this step to complete, Let's jump to Lab 2 and pick this back up when complete.|
+| This step, though shorter than training a predictor, should still take around 10 to 15mins. Given the time required for this step to complete, Let's jump to Lab 2 and pick this back up when complete.|
 |---|
 
 
@@ -255,6 +255,9 @@ This step, though shorter than training a predictor, should still take around 10
 8. You should subsequently see a graph with P90, P50, and P10 forecasts like so
 
    ![Forecast Graph](images/forecast_graph.png)   
+
+| Results Explained: The P10, P50, and P90 forecast values represent 10%, 50%, and 90% probability of satisfying the actual demand. The P50 forecast value come is expected to come in closest to what the actual demand should be. |
+|---|
 
 ---
 
