@@ -355,6 +355,20 @@ We will now query this table from Athena to verify.
    | TODO Configure 'Output Location' for Athena Workgroup. Or this step will error out.|
    |---|
    
+5. If this is a new AWS Account or if you've never used Amazon Athena before, this will result in an error like so:
+
+   Click on 'set up a query result location in Amazon S3'
+
+   ![](images/athena_query_result_location_error.png)   
+   
+6. For 'Query rsult location' enter a unique S3 bucket.
+
+7. Click 'Save'.
+
+   ![](images/athena_query_results_config.png)   
+   
+8. Now run the query again and it should succeed.   
+   
 5. Feel free to experiment by writing any Hive compatible query.   
     
    ![](images/athena_experiment.png)
