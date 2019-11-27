@@ -6,11 +6,21 @@ In this lab, we will store ingested data (data we're ingesting in Lab 1) into Am
 
 If you're coming here from Lab 1, you can continue where you're browser already is. 
 
-**OPTIONAL:** If you closed your browser, open a new tab and point it to https://console.aws.amazon.com/kinesisanalytics/home. 
+```### OPTIONAL STEPs:
 
-Then click on the Kinesis Analytics Data Stream that we just created.
+If you didn't close your browser tab in Lab 1, you can skip this section and jump to [Step A](Step-A) below. But if you did, follow the next few steps to get back to where you were. 
 
-![Open Kinesis Data Stream](images/kinesis_open_data_streams.png)
+1. Open a new tab and point it to https://console.aws.amazon.com/kinesisanalytics/home. 
+
+   Then click on 'RetailDataAnalytics', the Kinesis Data Analytics application that we just created.
+
+   ![Open Kinesis Data Stream](images/analytics_open.png)
+   
+2. Click on 'Go to SQL results'
+
+   ![Go to SQL Results](images/analytics_go_to_sql.png)   
+   
+   Now you can continue from Step A #1 below.
 
 ### Step A
 
@@ -138,9 +148,9 @@ Then click on the Kinesis Analytics Data Stream that we just created.
 
     ![S3 Buffer Configuration](images/configure_s3_buffer.png)
     
-23. Leave the rest as-is, scroll down, and click on 'Next'.
+23. Scroll down to the 'Permissions' section and for 'IAM role' click 'Create new or choose' 
 
-    ![Create Firehose IAM Role](images/firehose_iam_role.png)    
+    ![Create Firehose IAM Role](images/firehose_iam_role.png)        
 
 24. This will open up a new tab with a pre-created IAM Role and policy which you can just authorize by clicking on 'Allow'.
 
@@ -164,34 +174,9 @@ Then click on the Kinesis Analytics Data Stream that we just created.
 
     ![Firehose Create Success](images/firehose_create_success.png)
     
-When you exit this screen, it should automatically close the tab and put you right back to the original tab in [Step A](#Step-A) #3 that led you down this path.     
-
-### Step B - OPTIONAL
-
-| NOTE: If you're not back to this original tab, because you opened up new tabs or somehow stepped out of the above chain (understandably so, given the sheer number of steps above), you can follow these optional steps to lead you right back to [Step A](#Step-A) #3 |
-| --- | 
-
-
-1. Click on the 'Data analytics' link in the left hand tab.
-
-2. Click on 'RetailDataAnalytics', the Kinesis Data Analytics app that we just created, to expand it.
-
-   ![Choose Kinesis Analytics App](images/choose_kinesis_analytics_app.png)
-   
-3. Click on 'Application details'.   
-
-4. Click on 'Go to SQL results'.
-
-   ![Click on Go To SQL Results](images/go_to_sql_results.png)
-   
-5. Click on the 'Destination' tab below (scroll down a bit if you have to).
-
-6. Then click the 'Connect to a destination' button.
-
-   ![Connect to Firehose Destination](images/connect_to_firehose_destination.png)
-
-
-### Step C 
+You can now close this browser tab, or switch to the previous one (where you have the Kinesis Analytics Data application configuration open -- the browser tab that looks like the screenshot below in Step B #1)
+    
+### Step B
 
 We have successfully configured a Kinesis Data Firehose Delivery Stream and we're now going to configure our Kinesis Data Analytics  to use this as its destination.
 
@@ -227,7 +212,7 @@ We have successfully configured a Kinesis Data Firehose Delivery Stream and we'r
    ![Data in S3](images/s3_data.png)
       
 
-### Step E - Crawl S3 Data with AWS Glue
+### Step C - Crawl S3 Data with AWS Glue
 
 Open a new tab in your browser and point it to https://console.aws.amazon.com/glue
 
@@ -276,7 +261,7 @@ Open a new tab in your browser and point it to https://console.aws.amazon.com/gl
 12. You will see a success flash message with an option to run the newly created crawler right away. DO NOT RUN IT YET! (but, f you already clicked on it, well, no harm)
 
 
-### Step F - Update Glue IAM Role with Permissions to Access S3
+### Step D - Update Glue IAM Role with Permissions to Access S3
 
 1. Open up a new browser tab and point it at https://console.aws.amazon.com/iam.
 
@@ -344,7 +329,7 @@ Open a new tab in your browser and point it to https://console.aws.amazon.com/gl
     You should see a new table created in ```retail_analytics_db```. 
     
 
-### Step G - Query the Table
+### Step E - Query the Table
 
 We will now query this table from Athena to verify.
 
