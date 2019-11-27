@@ -4,11 +4,19 @@ In this lab, we will generate simulated POS data that we will ingest as it happe
 
 ## Sample Data
 
-COL_timestamp | store\_id | workstation\_id | operator\_id | item\_id | quantity | regular\_sales\_unit\_price | retail\_price\_modifier | retail\_kpi\_metric
---------------|-----------|-----------------|--------------|----------|----------|-----------------------------|-----------------------|------------------------
+The ```retail_kpi``` column is meant to be some (any) calculated value that makes sense for your business that you want to maximize (or minimize). You can certainly define multiple such KPIs (Key Performance Indicators).
+
+| COL_timestamp | store\_id | workstation\_id | operator\_id | item\_id | quantity | regular\_sales\_unit\_price | retail\_price\_modifier | retail\_kpi\_metric |
+|--------------|-----------|-----------------|--------------|----------|----------|-----------------------------|-----------------------|------------------------|
 2019-08-31T10:40:05.0 | store_36 | pos_2  | cashier_75  | item_1098 | 5 | 64.42 | 5.83 | 87  
 2019-09-27T17:12:33.0 | store_43 | pos_10 | cashier_175 | item_4159 | 5 | 50.25 | 7.68 | 85
-...                   |          |        |             |           |   |       |      |
+...                   | ...      | ...    | ...         | ...       |...|...| ... | ... |
+
+
+## Credentials
+
+| TODO Copy-paste ACCESS_ID  and SECRET_ACCESS_KEY  from Event Engine console |
+|---|
 
 
 ## Console / GUI
@@ -19,7 +27,7 @@ To ingest data, we'll first set up an Amazon Kinesis Data Stream to which we can
 
 1. Point browser to https://console.aws.amazon.com/kinesis
 
-   Note the region that you are defaulted to, which in the case of the screenshot below is 'Oregon'. While you are free to choose any supported region you prefer, we strongly recommend choosing Oregon for the purposes of this workshop.
+   Note the region that you are defaulted to, which in the case of the screenshot below is 'Oregon'. Any of the 6 (as of now) regions that you prefer where Amazon Forecast is supported is fine, so long as you ensure that you remain within that region across all labs.
    
    ![Default Region](images/kinesis_region.png)
    
@@ -70,20 +78,16 @@ bundle install
 
 ```shell
 mkdir config
-cd config
-touch aws.yml
+touch config/aws.yml
 ```
 
 Replace ```ACCESS_KEY_ID``` and ```SECRET_ACCESS_KEY``` with what you copied into your notepad at the beginning and then run:
 
 ```shell
-echo "access_key_id: [ACCESS_KEY_ID]" >> aws.yml
-echo "secret_access_key: [SECRET_ACCESS_KEY]" >> aws.yml
+echo "access_key_id: [ACCESS_KEY_ID]" >> config/aws.yml
+echo "secret_access_key: [SECRET_ACCESS_KEY]" >> config/aws.yml
 ```
 
-```shell
-cd ..
-```
 
 Then execute the script
 
