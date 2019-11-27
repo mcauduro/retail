@@ -10,18 +10,36 @@ In this workshop, we will build an end-to-end pipeline that
 
 ## Workshop Setup
 
-We will use a Cloud9 environment, which should have all of the most popular languages (Ruby, Python, NodeJS, Java, etc.) and many associated libraries already installed, to help save time and serve as a launch pad.
+### Event Engine
 
-| TODO Depending on Event Engine updates, copy-paste instructions to get ACCESS\_KEY\_ID and SECRET\_ACCESS\_KEY |
-|---|
+We will use the purpose-built Event Engine to provision free AWS accounts that you can use for this workshop.
+
+Head over to https://dashboard.eventengine.run.
+
+1. Enter your participant hash and go to the next screen
+
+   ![Event Engine Dashboard](images/event_engine_dashboard.png)
+   
+2. Click on 'AWS Console'
+
+   ![Event Engine AWS Console](images/event_engine_aws_console.png)
+   
+3. Copy-paste the Credential values into a Notepad so you have them for later. Specifically,
+   * ```AWS_ACCESS_KEY_ID```
+   * ```AWS_SECRET_ACCESS_KEY```
+
+   ![](images/event_engine_console_login.png)   
+
 
 ### Regions
 
-As of this writing, Amazon Forecast is supported in 6 regions. 
+As of this writing, Amazon Forecast is supported in 6 regions (below), **but the accounts provided in this Workshop default to Oregon.**
 
-Feel free to choose any region among these 6, but please do ensure that you **always** remain within your chosen region.
+If you're using your own account, feel free to choose one among the below supported regions. 
 
-Below are the supported regions:
+As a recommendation, use the free AWS account provided to you for this workshop and then perhaps work thru' the labs *again* in your own account after this workshop to reinforce. 
+
+The free AWS accounts provided will be shutdown shortly after the end of the workshop for security reasons. But the lab instructions will remain online for some time.
 
 Region Name              | Region 
 -------------------------|--------
@@ -33,6 +51,10 @@ Asia Pacific (Tokyo)     | ap-northeast-1
 EU (Ireland)             | eu-west-1
 
 ### Create Cloud9 Environment 
+
+
+We will use a Cloud9 environment, which should have all of the most popular languages (Ruby, Python, NodeJS, Java, etc.) and many associated libraries already installed, to help save time and serve as a launch pad.
+
 
 1. Point your browser to https://console.aws.amazon.com/cloud9
 
