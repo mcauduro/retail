@@ -12,6 +12,9 @@ In this workshop, we will build an end-to-end pipeline that
 
 We will use a Cloud9 environment, which should have all of the most popular languages (Ruby, Python, NodeJS, Java, etc.) and many associated libraries already installed, to help save time and serve as a launch pad.
 
+| TODO Depending on Event Engine updates, copy-paste instructions to get ACCESS\_KEY\_ID and SECRET\_ACCESS\_KEY |
+|---|
+
 ### Regions
 
 As of this writing, Amazon Forecast is supported in 6 regions. 
