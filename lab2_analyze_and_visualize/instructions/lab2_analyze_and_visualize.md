@@ -216,9 +216,13 @@ We have successfully configured a Kinesis Data Firehose Delivery Stream and we'r
 
 Open a new tab in your browser and point it to https://console.aws.amazon.com/glue
 
+1. If you see a "Splash Screen", just click 'Get Started'
+
+   ![Get Started with Glue](images/glue_get_started.png)
+
 1. Click on 'Add database'.
 
-   ![Add database](images/glue_0_add_database.png)
+   ![Add database](images/glue_0_add_table.png)
    
 2. Give this crawler a descriptive name and click 'Next'.
 
@@ -290,20 +294,21 @@ Open a new tab in your browser and point it to https://console.aws.amazon.com/gl
    **NOTE:** Replace YOUR\_S3\_BUCKET\_NAME with what you used so that Glue may access **YOUR** S3 bucket.
 
    ```json
-    "Statement": [
-        {
-            "Sid": "VisualEditor0",
-            "Effect": "Allow",
-            "Action": [
-                "s3:PutObject",
-                "s3:GetObject"
-            ],
-            "Resource": [
-                "arn:aws:s3:::YOUR_S3_BUCKET_NAME/prod-retail-data*"
-            ]
-        }
-    ]
-}   
+    {
+        "Version": "2012-10-17",
+        "Statement": [
+            {
+                "Effect": "Allow",
+                "Action": [
+                    "s3:GetObject",
+                    "s3:PutObject"
+                ],
+                "Resource": [
+                    "arn:aws:s3:::YOUR_S3_BUCKET_NAME/prod-retail-data/*"
+                ]
+            }
+        ]
+    }   
    ```   
    
 8. Click on 'Review policy'
@@ -322,7 +327,7 @@ Open a new tab in your browser and point it to https://console.aws.amazon.com/gl
    
 13. To verify that the Glue crawler has crawled your S3 data, has automatically discovered the underlying schema, and has created a table on your behalf, click on 'Tables' on the left-hand pane.
 
-14. Enter 'retail_analytics_db' in the 'Search' field to narrow results down (if necessary)
+14. Enter 'retail\_analytics\_db' in the 'Search' field to narrow results down (if necessary)
 
     ![](images/glue_view_database_tables.png)
     
@@ -335,13 +340,20 @@ We will now query this table from Athena to verify.
 
 1. Open Amazon Athena by pointing your browser tab at https://console.aws.amazon.com/athena
 
-2. Click on the 'Databases' drop-down and choose 'retail-analytics-db'
+1. If you see a splash screen, click 'Get started' 
 
-3. In it, you should see the table 'prod_retail_data'. Click on the dotted link beside it to open up multiple options.
+   ![Athena Splash Screen](images/athena_splash_screen.png)
+
+2. Click on the 'Databases' drop-down and choose 'retail\_analytics\_db'
+
+3. In it, you should see the table 'prod\_retail\_data'. Click on the dotted link beside it to open up multiple options.
 
 4. Click on 'Preview table' to query it's contents.
 
    ![](images/athena.png)
+   
+   | TODO Configure 'Output Location' for Athena Workgroup. Or this step will error out.|
+   |---|
    
 5. Feel free to experiment by writing any Hive compatible query.   
     
