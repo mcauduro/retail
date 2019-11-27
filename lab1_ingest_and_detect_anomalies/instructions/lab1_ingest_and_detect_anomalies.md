@@ -285,14 +285,14 @@ Here, we'll add some streaming SQL to process ingested PoS data on the fly. We'l
 5. Scroll to the right until you reach the ```ANOMALY_SCORE``` column. 
 
    | Results Explained: You'll notice floating point values. What these values mean are that, the algorithm considers records with higher ```ANOMALY_SCORE```s as *more anomalous*. |
-| --- | 
+   | --- | 
 
    ![Anomaly Scores](images/anomaly_score.png)
 
 6. Look further to the right of this and you'll see the ```ANOMALY_EXPLANATION``` column adjacent to it. Notice the values in this (JSON formatted) column. 
 
    | Results Explained: In the ```ANOMALY_EXPLANATION``` column, you'll see ```retail_kpi_metric``` being called out with an associated ```ATTRIBUTION_SCORE```. This is the algorithms's way of indicatiing the extent to which this column contributed to the anomaly score. |
-| --- |   
+   | --- |   
    
    ![Attribution Scores](images/kpi_attribution.png)   
 
