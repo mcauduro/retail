@@ -269,11 +269,12 @@ Here, we'll add some streaming SQL to process ingested PoS data on the fly. We'l
    See the docs here for a more detailed explanation: https://docs.aws.amazon.com/kinesisanalytics/latest/dev/streaming-sql-concepts.html
 
 
-3. Once the results start streaming in, under the 'Real-time analytics' tab, you will notice multiple streams. 
+3. Once the results start streaming in, under the 'Source' and 'Real-time analytics' tab, you will notice multiple streams. 
    
-   1. ```SOURCE_SQL_STREAM_001``` - raw source data
-   2. ```RETAIL_KPI_ANOMALY_DETECTION_STREAM``` - stream anomaly scores
-   3. ```DESTINATION_STREAM``` - raw source data ```JOIN```ed with anomaly scores to store in Amazon S3 for historical analysis.
+   1. ```SOURCE_SQL_STREAM_001``` - raw source data. You will see this under the 'Source' tabs. 
+   2. ```RETAIL_KPI_ANOMALY_DETECTION_STREAM``` - stream anomaly scores. You will see this under the 'Real-time analytics' tabs. 
+   3. ```DESTINATION_STREAM``` - raw source data ```JOIN```ed with anomaly scores to store in Amazon S3 for historical analysis. You will see this under the 'Real-time analytics' tabs. 
+   
    
 4. Under 'In-application streams' click on the ```RETAIL_KPI_ANOMALY_DETECTION_STREAM``` and wait a seconds for the data to start flowing.
 
