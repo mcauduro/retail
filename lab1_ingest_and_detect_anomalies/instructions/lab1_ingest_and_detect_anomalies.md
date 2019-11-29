@@ -88,7 +88,7 @@ echo "access_key_id: ACCESS_KEY_ID" >> config/aws.yml
 echo "secret_access_key: SECRET_ACCESS_KEY" >> config/aws.yml
 ```
 
-Note: Did you remember to replace ```ACCESS_KEY_ID``` and ```SECRET_ACCESS_KEY``` above?
+**Note:** Did you remember to replace ```ACCESS_KEY_ID``` and ```SECRET_ACCESS_KEY``` above?
 
 
 Then execute the script
