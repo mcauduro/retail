@@ -27,8 +27,9 @@ Head over to https://dashboard.eventengine.run.
 3. Copy-paste the Credential values into a Notepad so you have them for later. Specifically,
    * ```AWS_ACCESS_KEY_ID```
    * ```AWS_SECRET_ACCESS_KEY```
+   * ```AWS_SESSION_TOKEN```
 
-   We will refer to these interchangeably as ```AWS_ACCESS_KEY_ID``` or ```ACCESS_KEY_ID```. And as ```AWS_SECRET_ACCESS_KEY``` or ```SECRET_ACCESS_KEY```
+   We will refer to these interchangeably as ```AWS_ACCESS_KEY_ID``` or ```ACCESS_KEY_ID```. And as ```AWS_SECRET_ACCESS_KEY``` or ```SECRET_ACCESS_KEY```. And as ```AWS_SESSION_TOKEN``` or ```SESSION_TOKEN```.
 
    ![](images/event_engine_console_login.png)   
 

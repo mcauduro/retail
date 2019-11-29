@@ -13,11 +13,6 @@ The ```retail_kpi``` column is meant to be some (any) calculated value that make
 ...                   | ...      | ...    | ...         | ...       |...|...| ... | ... |
 
 
-## Credentials
-
-| TODO Copy-paste ACCESS_ID  and SECRET_ACCESS_KEY  from Event Engine console |
-|---|
-
 
 ## Console / GUI
 
@@ -86,6 +81,7 @@ Replace ```ACCESS_KEY_ID``` and ```SECRET_ACCESS_KEY``` with what you copied int
 ```shell
 echo "access_key_id: ACCESS_KEY_ID" >> config/aws.yml
 echo "secret_access_key: SECRET_ACCESS_KEY" >> config/aws.yml
+echo "session_token: SESSION_TOKEN" >> config/aws.yml
 ```
 
 **Note:** Did you remember to replace ```ACCESS_KEY_ID``` and ```SECRET_ACCESS_KEY``` above?
