@@ -294,6 +294,10 @@ $ ruby retail_pos_simulator.rb
 
 
 <style>
+    body {
+        background-color: #fafafa;
+    }
+
     img {
         box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 16px 30px 7px rgba(0,0,0,0.56), 0 0 0 0 rgba(0, 0, 0, 0.3);
         padding: 3px 5px;
