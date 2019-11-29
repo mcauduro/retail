@@ -28,6 +28,8 @@ Head over to https://dashboard.eventengine.run.
    * ```AWS_ACCESS_KEY_ID```
    * ```AWS_SECRET_ACCESS_KEY```
 
+   We will refer to these interchangeably as ```AWS_ACCESS_KEY_ID``` or ```ACCESS_KEY_ID```. And as ```AWS_SECRET_ACCESS_KEY``` or ```SECRET_ACCESS_KEY```
+
    ![](images/event_engine_console_login.png)   
 
 
