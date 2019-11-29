@@ -117,7 +117,7 @@ If you didn't close your browser tab in Lab 1, you can skip this section and jum
    ![Create S3 Destination](images/create_s3_destination.png)
 
 
-18. All S3 bucket names, regardless who created them, need to be globally unique. Some string that is *unique to you* appended or prepended to ```retail_analytics``` should help. For example ```[COMPANY_NAME]_[SOME_UNIQUE_IDENTIFIER]_retail_analytics``` has a higher likelihood of being unique. 
+18. All S3 bucket names, regardless who created them, need to be globally unique. Some string that is *unique to you* appended or prepended to ```retail_analytics``` should help. For example ```[COMPANY-NAME]-[SOME-UNIQUE-IDENTIFIER]-retail-analytics``` has a higher likelihood of being unique. 
 
    ![Create S3 Bucket](images/create_s3_bucket_dialog.png)
 
