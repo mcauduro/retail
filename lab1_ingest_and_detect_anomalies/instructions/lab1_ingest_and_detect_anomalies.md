@@ -84,9 +84,11 @@ touch config/aws.yml
 Replace ```ACCESS_KEY_ID``` and ```SECRET_ACCESS_KEY``` with what you copied into your notepad at the beginning and then run:
 
 ```shell
-echo "access_key_id: [ACCESS_KEY_ID]" >> config/aws.yml
-echo "secret_access_key: [SECRET_ACCESS_KEY]" >> config/aws.yml
+echo "access_key_id: ACCESS_KEY_ID" >> config/aws.yml
+echo "secret_access_key: SECRET_ACCESS_KEY" >> config/aws.yml
 ```
+
+Note: Did you remember to replace ```ACCESS_KEY_ID``` and ```SECRET_ACCESS_KEY``` above?
 
 
 Then execute the script
@@ -407,6 +409,10 @@ Switch over to Lab 3 and continue from Step E to generate forecasts.
 ---
 
 <style>
+    body {
+        background-color: #fafafa;
+    }
+
     img {
         box-shadow:inset 0 1px 0 rgba(255,255,255,.6), 0 16px 30px 7px rgba(0,0,0,0.56), 0 0 0 0 rgba(0, 0, 0, 0.3);
         padding: 3px 5px;
