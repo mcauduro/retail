@@ -197,7 +197,7 @@ We have successfully configured a Kinesis Data Firehose Delivery Stream and we'r
 5. **CONDITIONAL Step** Check that your script is still running. If not, run it now.
 
    ```shell
-   cd lab1_ingest_and_detect_anomalies/src
+   cd lab1/src
    ```
    
    ```shell
@@ -378,7 +378,7 @@ To recap, what we did was that we
 * Used AWS Glue to crawl data in Amazon S3 and auto-discover schema
 * Used Amazon Athena to query and gain insights into collected data
 
-You can now jumpt to [Lab 3](../../lab3_forecast/instructions/lab3_forecast.md) (Step F) to lookup a forecast.
+You can now jump to [Lab 3](../../lab3/instructions/lab3.md) (Step F) to lookup a forecast.
 
 ---
 

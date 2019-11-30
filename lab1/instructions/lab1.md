@@ -60,7 +60,7 @@ Since we've created the Kinesis Data Stream to which we can send data to, we'll 
 To run this script, switch to the browser tab where you have the Cloud9 IDE open. Go to the Cloud9 IDE terminal and from the root workshop directory ```/retail``` run:
 
 ```shell
-cd lab1_ingest_and_detect_anomalies/src
+cd lab1/src
 ```
 
 ```shell

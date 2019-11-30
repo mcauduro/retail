@@ -110,7 +110,7 @@ We will now import data target timeseries dataset that we just defined
    
    
    ```shell
-   cd lab3_forecast/src
+   cd lab3/src
    ```
       
    ```shell
@@ -196,7 +196,7 @@ Just to recap, what we've done so far is:
 * Imported this dataset into Forecast
 * And launched a job to train a predictor on this data.
 
-At this point, we'll jump to [Lab 1](../../lab1_ingest_and_detect_anomalies/instructions/lab1_ingest_and_detect_anomalies.md) and pick this thread back up when the training is done.
+At this point, we'll jump to [Lab 1](../../lab1/instructions/lab1.md) and pick this thread back up when the training is done.
    
 
    
@@ -268,10 +268,10 @@ While you can directly use the pre-generated ```retail_analytics.csv``` file to 
 
 To run this code:
 
-cd into the ```lab3_forecast``` directory
+cd into the ```lab3``` directory
 
 ```shell
-$ cd retail/lab3_forecast
+$ cd lab3
 ```
 
 install bundler (which is used to install ruby dependencies)
