@@ -404,6 +404,7 @@ Before jumping into Lab 2, now would be a good time to jump back to Lab 3 and ch
 Switch over to Lab 3 and continue from Step E to generate forecasts.
 
 ---
+*[Ignore anything the below this, including any `<style>` directives]*
 
 <style>
     body {

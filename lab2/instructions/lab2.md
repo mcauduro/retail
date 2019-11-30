@@ -381,7 +381,7 @@ To recap, what we did was that we
 You can now jump to [Lab 3](../../lab3/instructions/lab3.md) (Step F) to lookup a forecast.
 
 ---
-
+*[Ignore anything the below this, including any `<style>` directives]*
 
 <style>
     body {

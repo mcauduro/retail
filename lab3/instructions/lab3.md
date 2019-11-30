@@ -292,6 +292,8 @@ and run the script like so...
 $ ruby retail_pos_simulator.rb
 ```
 
+---
+*[Ignore anything the below this, including any `<style>` directives]*
 
 <style>
     body {

@@ -140,7 +140,7 @@ Or manually open ```lab3/instructions/lab3.md```
 
 
 ---
-
+*[Ignore anything the below this, including any `<style>` directives]*
 
 <style>
     body {
