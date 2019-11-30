@@ -125,17 +125,17 @@ So hit up Lab 3 in the link below first. We've added cues after each of the two 
 
 
 
-### [Lab 1 -- Ingest and Detect Anomalies](lab1_ingest_and_detect_anomalies/instructions/lab1_ingest_and_detect_anomalies.md)
+### [Lab 1 -- Ingest and Detect Anomalies](lab1/instructions/lab1.md)
 
-Or manually open ```lab1_ingest_and_detect_anomalies/instructions/lab_1_ingest_and_detect_anomalies.md```
+Or manually open ```lab1/instructions/lab_1.md```
 
-### [Lab 2 -- Analyze and Visualize](lab2_analyze_and_visualize/instructions/lab2_analyze_and_visualize.md)
+### [Lab 2 -- Analyze and Visualize](lab2/instructions/lab2.md)
 
-Or manually open ```lab2_analyze_and_visualize/instructions/lab2_analyze_and_visualize.md```
+Or manually open ```lab2/instructions/lab2.md```
 
-### [Lab 3 -- Forecast](lab3_forecast/instructions/lab3_forecast.md)
+### [Lab 3 -- Forecast](lab3/instructions/lab3.md)
 
-Or manually open ```lab3_forecast/instructions/lab3_forecast.md```
+Or manually open ```lab3/instructions/lab3.md```
 
 
 
