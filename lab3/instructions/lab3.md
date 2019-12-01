@@ -2,10 +2,14 @@
 
 In this lab, we will use aggregated retail analytics to forecast future sales. 
 
-| Outside of this workshop setting, you would have already setup infrastructure for ingestion, processing, analyzing, and storing data. And you'd have data that is readily available. |  
+| <p style="color: #e57222;">A Quick Note, before we begin:</p> |  
 |---|
 
-But to make it easy, for workshop purposes, we will simulate aggregated retail analytics data. This simulated data set is aggregated hourly and, for convenience, is included in the file ```retail_analytics.csv```. It looks something like below.
+Outside of this workshop setting, you would have already setup infrastructure for ingestion, processing, analyzing, and storing data (essentially labs 1 and 2). And you'd have data that is readily available. 
+
+But because it takes some time to train Amazon Forecast's predictors, for the purposes of this workshop, we will simulate aggregated retail analytics data and use that data to train predictors. And work on labs 1 and 2 while the training runs in the background. 
+
+This simulated data set is aggregated hourly and, for convenience, is included in the file ```retail_analytics.csv```. It looks something like below.
 
 ## Simulated Sample Data (aggregated hourly)
 
@@ -16,22 +20,11 @@ Time                | Item     | Quantity | StoreLocation
 ...                 |      ... |      ... |  ...
 2019-07-01 14:00:00 | markers  |       29 | Los Angeles
 
-## Forecast
+## Regions
 
-As of this writing, Amazon Forecast is supported in 6 regions. Feel free to choose a region of your choice, but please do ensure that you **always** remain within your chosen region, since you won't be able to see the models and predictors you created in one region from another region. 
+If you're using an AWS account vended by the Event Engine for this lab, you will be in `us-west-2`. This is displayed as "Oregon" in the top right-hand corner of the AWS console and is referred to as ```us-west-2``` when using the CLI or API.
 
-Below are the supported regions:
-
-Region Name              | Region 
--------------------------|--------
-US East (Ohio)           | us-east-2
-US East (N. Virginia)    | us-east-1
-US West (Oregon)         | us-west-2
-Asia Pacific (Singapore) |	ap-southeast-1
-Asia Pacific (Tokyo)     | ap-northeast-1
-EU (Ireland)             | eu-west-1
-
-For the purposes of this lab, we're using US West (Oregon), which you may see in a few screenshots. This is displayed as "Oregon" in the top right-hand corner of the AWS console and is referred to as ```us-west-2``` when using the CLI or API.
+If you're using one of your own AWS accounts, please note the region that you created your Cloud9 IDE console in and remain within that region.
 
 ### Step A
 
