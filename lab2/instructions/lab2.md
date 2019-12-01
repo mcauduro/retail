@@ -63,7 +63,7 @@ If you didn't close your browser tab in Lab 1, you can skip this section and jum
 
    ![Configure Lambda Firehose Processor - Part 2](images/configure_lambda_firehose_processor_page2.png)  
    
-10. In this screen, you can edit the Lambda source code. 
+10. In this next screen, you can edit the Lambda source code. 
     * For 'Runtime' select 'Node.js 8.10'.
     * And for source code, copy paste the file ```AnnotateRetailDataAnalytics.js```.
 
