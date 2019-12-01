@@ -48,7 +48,7 @@ If you didn't close your browser tab in Lab 1, you can skip this section and jum
 
    ![Create Firehose Page 2](images/create_firehose_2.png)
    
-7. Click on 'Kinesis Firehose Process Record Streams as source' 
+7. Click on 'General Firehose Processing' (the first link) 
 
    ![Choose a Lambda Blueprint](images/choose_lambda_blueprint.png)   
 
