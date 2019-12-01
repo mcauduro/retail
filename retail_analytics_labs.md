@@ -12,7 +12,7 @@ In this workshop, we will build an end-to-end pipeline that
 
 ### Event Engine
 
-We will use the purpose-built Event Engine to provision free AWS accounts that you can use for this workshop.
+We will use the purpose-built Event Engine to provision free AWS accounts that you can use for the duration of this workshop.
 
 Head over to https://dashboard.eventengine.run.
 
@@ -38,11 +38,12 @@ Head over to https://dashboard.eventengine.run.
 
 As of this writing, Amazon Forecast is supported in 6 regions (below), **but the accounts provided in this Workshop default to Oregon.**
 
-If you're using your own account, feel free to choose one among the below supported regions. 
+| <p style="color: #e57222;">Note</p> If you're using your own account, it is still recommended to use `us-west-2` (script in lab1 uses `us-west-2`), but if you're confident of replacing `us-west-2` in the script with the region of your preference, feel free to choose any of the supported regions below.|
+|---|
 
-As a recommendation, use the free AWS account provided to you for this workshop and then perhaps work thru' the labs *again* in your own account after this workshop to reinforce. 
+As a recommendation, use the free AWS account provided to you for this workshop and then perhaps work thru' the labs *again* in your own AWS account after this workshop to reinforce. The lab instructions will remain online for some time.
 
-The free AWS accounts provided will be shutdown shortly after the end of the workshop for security reasons. But the lab instructions will remain online for some time.
+The free AWS accounts, however, are only for the duration of this workshop and will be shutdown shortly after. 
 
 Region Name              | Region 
 -------------------------|--------
@@ -116,11 +117,14 @@ Once you've setup your Cloud9 environment, you can start off working thru' each 
 
 ## Order of Labs
 
-The labs have been laid out in (chrono)logical order, since, typically you'd ingest -> process -> store -> analyze -> and forecast.
+| <p style="color: #e57222;">Note</p> Given that 1. training Amazon Forecast predictors and 2. generating forecasts, each takes significant time (around 40 and 25 mins each), we're going to shuffle the order of the labs and start off with Lab 3. And work thru' other labs, during the training of predictors and then again during generation of forecasts.|
+|---|
 
-Given that 1. training Amazon Forecast predictors and 2. generating forecasts, each takes significant time (around 40 and 25 mins each), we're going to shuffle the order of the labs and start off with Lab 3. And work thru' other labs, during the training of predictors and then again during generation of forecasts.
 
-So hit up Lab 3 in the link below first. We've added cues after each of the two time-consuming steps in Lab 3, so you'll know when to switch to other labs.
+Of course, in a typical production scenario, the order would be: ingest -> process -> store -> analyze -> and forecast. 
+
+
+So, hit up Lab 3 in the link below first. We've added cues after each of the two time-consuming steps in Lab 3, so you'll know when to switch to other labs to allow those steps to finish in the background.
 
 
 

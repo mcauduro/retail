@@ -4,7 +4,8 @@ In this lab, we will generate simulated POS data that we will ingest as it happe
 
 ## Sample Data
 
-The ```retail_kpi``` column is meant to be some (any) calculated value that makes sense for your business that you want to maximize (or minimize). You can certainly define multiple such KPIs (Key Performance Indicators).
+| <p style="color: #e57222;">A note on the KPI metric</p> The ```retail_kpi``` column is meant to be some (any) calculated value that makes sense for your business that you want to maximize (or minimize). You can certainly define multiple such KPIs (Key Performance Indicators). |
+|---|
 
 | COL_timestamp | store\_id | workstation\_id | operator\_id | item\_id | quantity | regular\_sales\_unit\_price | retail\_price\_modifier | retail\_kpi\_metric |
 |--------------|-----------|-----------------|--------------|----------|----------|-----------------------------|-----------------------|------------------------|
@@ -76,7 +77,10 @@ mkdir config
 touch config/aws.yml
 ```
 
-Replace ```ACCESS_KEY_ID``` and ```SECRET_ACCESS_KEY``` with what you copied into your notepad at the beginning and then run:
+Replace ```ACCESS_KEY_ID```, ```SECRET_ACCESS_KEY```, and ```SESSION_TOKEN``` with what you copied into your notepad at the beginning and then run:
+
+| <p style="color: #e57222;">Note</p> The whitespace after each of the colons `: ` below is critical, so preserve the whitespace after the colon when you copy-paste each of the values. Otherwise, it isn't valid YAML syntax and the script will fail to parse the values.|
+|---|
 
 ```shell
 echo "access_key_id: ACCESS_KEY_ID" >> config/aws.yml
@@ -84,7 +88,8 @@ echo "secret_access_key: SECRET_ACCESS_KEY" >> config/aws.yml
 echo "session_token: SESSION_TOKEN" >> config/aws.yml
 ```
 
-**Note:** Did you remember to replace ```ACCESS_KEY_ID``` and ```SECRET_ACCESS_KEY``` above?
+| <p style="color: #e57222;">Note</p> Did you remember to replace ```ACCESS_KEY_ID```, ```SECRET_ACCESS_KEY```, and ```SESSION_TOKEN``` above? And preserve the whitespace after the `:`? |
+|---|
 
 
 Then execute the script
@@ -259,8 +264,8 @@ Here, we'll add some streaming SQL to process ingested PoS data on the fly. We'l
    You will need to wait for a few 10 seconds for the results to start streaming. While waiting for this to update...
    
          
-   | Useful terms: It might also be helpful to understand the simple concepts of a STREAM and a PUMP. |
-| --- | 
+   |<p style="color: #e57222;">Useful Terms</p> It might also be helpful to understand the simple concepts of a STREAM and a PUMP.|
+   |---| 
    
    **STREAM**: An *in-application* stream works like a table that you can query using SQL statements, but it's called a stream because it represents continuous data flow.
    
@@ -283,15 +288,15 @@ Here, we'll add some streaming SQL to process ingested PoS data on the fly. We'l
 
 5. Scroll to the right until you reach the ```ANOMALY_SCORE``` column. 
 
-   | Results Explained: You'll notice floating point values. What these values mean are that, the algorithm considers records with higher ```ANOMALY_SCORE```s as *more anomalous*. |
-   | --- | 
+   | <p style="color: #e57222;">Results Explained</p> You'll notice floating point values. What these values mean are that, the algorithm considers records with higher ```ANOMALY_SCORE```s as *more anomalous*. |
+   |---| 
 
    ![Anomaly Scores](images/anomaly_score.png)
 
 6. Look further to the right of this and you'll see the ```ANOMALY_EXPLANATION``` column adjacent to it. Notice the values in this (JSON formatted) column. 
 
-   | Results Explained: In the ```ANOMALY_EXPLANATION``` column, you'll see ```retail_kpi_metric``` being called out with an associated ```ATTRIBUTION_SCORE```. This is the algorithms's way of indicatiing the extent to which this column contributed to the anomaly score. |
-   | --- |   
+   | <p style="color: #e57222;">Results Explained</p> In the ```ANOMALY_EXPLANATION``` column, you'll see ```retail_kpi_metric``` being called out with an associated ```ATTRIBUTION_SCORE```. This is the algorithms's way of indicatiing the extent to which this column contributed to the anomaly score. |
+   |---|   
    
    ![Attribution Scores](images/kpi_attribution.png)   
 
@@ -388,8 +393,8 @@ Now we'll slightly modify the above streaming SQL and compare the results.
 
 4. Now scroll again all the way to the right until you see the ```ANOMALY_SCORE``` and ```ANOMALY_EXPLANATION``` columns. Notice more values in the ```ANOMALY_EXPLANATION``` column than before?
 
-   | Results Explained: In the ```ANOMALY_EXPLANATION``` column, this time, you'll notice the presence of ```quantity```,```retail_price_modifier```, and ```regular_sales_unit_price```, in addition to ```retail_kpi_metric```. The algorithm is now using all of these numeric values to determine the anomaly score of a record. So, you get to cherry pick the values that you think are most relevant and want the algorithm to score. |
-| --- |   
+   | <p style="color: #e57222;">Results Explained</p> In the ```ANOMALY_EXPLANATION``` column, in addition to ```retail_kpi_metric```, you'll also notice the presence of ```quantity```,```retail_price_modifier```, and ```regular_sales_unit_price``` metrics. The algorithm is now using all of these numeric values to determine the anomaly score of a record. In this way, you get to cherry pick the metrics data that you think are most relevant and want the algorithm to score. |
+|---|   
 
 ### Recap
 
