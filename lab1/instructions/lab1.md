@@ -394,7 +394,7 @@ Now we'll slightly modify the above streaming SQL and compare the results.
 4. Now scroll again all the way to the right until you see the ```ANOMALY_SCORE``` and ```ANOMALY_EXPLANATION``` columns. Notice more values in the ```ANOMALY_EXPLANATION``` column than before?
 
    | <p style="color: #e57222;">Results Explained</p> In the ```ANOMALY_EXPLANATION``` column, in addition to ```retail_kpi_metric```, you'll also notice the presence of ```quantity```,```retail_price_modifier```, and ```regular_sales_unit_price``` metrics. The algorithm is now using all of these numeric values to determine the anomaly score of a record. In this way, you get to cherry pick the metrics data that you think are most relevant and want the algorithm to score. |
-|---|   
+   |---|   
 
 ### Recap
 
