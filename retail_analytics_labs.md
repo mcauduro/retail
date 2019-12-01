@@ -133,7 +133,7 @@ So, hit up Lab 3 in the link below first. We've added cues after each of the two
 
 Or manually open ```lab1/instructions/lab_1.md```
 
-### [Lab 2 -- Analyze and Visualize](lab2/instructions/lab2.md)
+### [Lab 2 -- Store and Analyze](lab2/instructions/lab2.md)
 
 Or manually open ```lab2/instructions/lab2.md```
 
