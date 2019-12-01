@@ -84,7 +84,7 @@ We will use a Cloud9 environment, which should have all of the most popular lang
    
 7. Leave the 'Platform' option (chosen by default) at 'Amazon Linux' 
 
-8. For 'Cost-saving setting', choose 'AFter four hours'
+8. For 'Cost-saving setting', choose 'After four hours'
 
 9. Click 'Next Step'
 
