@@ -62,7 +62,9 @@ We will use a Cloud9 environment, which should have all of the most popular lang
 
 1. Point your browser to https://console.aws.amazon.com/cloud9
 
-2. From the top right-hand corner, choose one of the 6 regions above.
+2. On the top right-hand corner, ensure that you're in the Oregon region if you're using the AWS account provided as part of this workshop. 
+
+   If you're using your own account however, choose one of the 6 regions above (Oregon still recommended).
 
 2. Click on 'Create environment'
 
