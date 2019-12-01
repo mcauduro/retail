@@ -66,6 +66,7 @@ If you didn't close your browser tab in Lab 1, you can skip this section and jum
 10. In this next screen, you can edit the Lambda source code. 
     * For 'Runtime' select 'Node.js 8.10'.
     * And for source code, copy paste the file ```AnnotateRetailDataAnalytics.js```.
+    * Take a look at the comments in the source code to clarify (just conceptually) what we're doing with this Lambda function.
 
     ![Configure Lambda Firehose Processor - Source Code](images/configure_lambda_firehose_processor_source.png)        
 
@@ -117,7 +118,7 @@ If you didn't close your browser tab in Lab 1, you can skip this section and jum
    ![Create S3 Destination](images/create_s3_destination.png)
 
 
-18. All S3 bucket names, regardless who created them, need to be globally unique. Some string that is *unique to you* appended or prepended to ```retail_analytics``` should help. For example ```[COMPANY-NAME]-[SOME-UNIQUE-IDENTIFIER]-retail-analytics``` has a higher likelihood of being unique. 
+18. All S3 bucket names, regardless who or which accounts created them, need to be globally unique. Some string that is *unique to you* appended or prepended to ```retail_analytics``` should help. For example ```[COMPANY-NAME]-[SOME-UNIQUE-IDENTIFIER]-retail-analytics``` has a higher likelihood of being unique. 
 
    ![Create S3 Bucket](images/create_s3_bucket_dialog.png)
 
@@ -138,6 +139,8 @@ If you didn't close your browser tab in Lab 1, you can skip this section and jum
      ```
      prod-retail-data-errors/year=!{timestamp:yyyy}/month=!{timestamp:MM}/day=!{timestamp:dd}/hour=!{timestamp:HH}/!{firehose:error-output-type}
      ```
+     
+   * The above two prefix configurations allow customizing the prefixes (or the paths at which incoming data will be stored) using both static and dynamic (such as date) information. With the above configuration, we're choosing to store it using the Hive compatible partitioning format, which works well for efficient querying with Amazon Athena and Amazon EMR.  
 
    ![Configure S3 Destination](images/configure_s3_destination.png)
 
