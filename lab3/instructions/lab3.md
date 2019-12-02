@@ -222,7 +222,7 @@ Once the predictor is trained, we'll generate forecasts.
 
  
    
-| <p style="color: #e57222;">Note</p> This step, though shorter than training a predictor, should still take around 10 to 15mins. Given the time required for this step to complete, Let's jump to [Lab 2](../../lab2/instructions/lab2.md and pick this back up when complete.|
+| <p style="color: #e57222;">Note</p> This step, though shorter than training a predictor, should still take around 10 to 15mins. Given the time required for this step to complete, Let's jump to [Lab 2](../../lab2/instructions/lab2.md) and pick this back up when complete.|
 |---|
 
 
