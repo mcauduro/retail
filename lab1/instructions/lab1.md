@@ -413,7 +413,7 @@ To Recap, we
 
 Before jumping into Lab 2, now would be a good time to jump back to Lab 3 and check up on Amazon Forecast predictor training, which should be done.
 
-Switch over to Lab 3 and continue from Step E to generate forecasts.
+Switch over to [Lab 3](../../lab3/instructions/lab3.md#step-e) and continue from Step E to generate forecasts.
 
 ---
 *[Ignore anything the below this, including any `<style>` directives]*
