@@ -197,10 +197,10 @@ We have successfully configured a Kinesis Data Firehose Delivery Stream and we'r
 
    ![Go to SQL Results](images/go_to_sql_results_2.png)
 
-5. **CONDITIONAL Step** Check that your script is still running. If not, run it now.
+5. **CONDITIONAL Step** Check that your script is still running in Cloud9. If not, run it now.
 
    ```shell
-   cd lab1/src
+   cd ~/environment/retail/lab1/src
    ```
    
    ```shell
