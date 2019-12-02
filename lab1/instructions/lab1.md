@@ -49,7 +49,7 @@ To ingest data, we'll first set up an Amazon Kinesis Data Stream to which we can
 
    ![Create Streams](images/create_streams.png)
    
-3. Click 'Create Kinesis Streams'. This will take a few 10 seconds after which, the Kinesis Data Stream should have been created. You should see a success message like this:
+3. Click 'Create Kinesis Streams'. This will take around 10 to 15 seconds after which, the Kinesis Data Stream should have been created. You should see a success message like this:
 
    ![Stream Creation Success](images/data_stream_created.png)
    
@@ -152,7 +152,7 @@ We will now create an Amazon Kinesis Data Analytics App (SQL-based) that we will
    
    ![Edit Schema](images/edit_schema.png)
    
-8. Click on 'Save schema and update stream samples'. This will take a few 10s, but once complete, and the stream samples are updated, scroll down and you will notice the corrected schema as shown:
+8. Click on 'Save schema and update stream samples'. This will take around 10 - 15 seconds, but once complete, and the stream samples are updated, scroll down and you will notice the corrected schema as shown:
 
    ![Edited Schema](images/edited_schema.png)   
    
