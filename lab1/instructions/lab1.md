@@ -93,10 +93,12 @@ echo "session_token: SESSION_TOKEN" >> config/aws.yml
 | <p style="color: #e57222;">Note</p> Did you remember to replace ```ACCESS_KEY_ID```, ```SECRET_ACCESS_KEY```, and ```SESSION_TOKEN``` above? And preserve the whitespace after the `:`? |
 |---|
 
-
-Then execute the script.
+**OPTIONAL**: If you're using the AWS account provided via Event Engine, ignore this. But if you're running in your own account and selected a different region, make sure you edit the script and change `us-west-2` on line 15 to the region you prefer.
 
 As mentioned earlier, the ```gen_pos_log_stream.rb``` script artificially introduces anomalous values for the KPI metric. Most values are between 80 - 95, but some values are below 10 (we inject these anomalous values about 3% of the time).
+
+
+Execute the script by running:
 
 
 ```shell
