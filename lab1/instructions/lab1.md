@@ -7,6 +7,8 @@ In this lab, we will generate simulated POS data that we will ingest as it happe
 | <p style="color: #e57222;">A note on the KPI metric</p> The ```retail_kpi``` column is meant to be some (any) calculated value that makes sense for your business that you want to maximize (or minimize). You can certainly define multiple such KPIs (Key Performance Indicators). |
 |---|
 
+What we're doing when simulating this data, is artificially introducing anomalous values for this KPI. Most values are between 80 - 95, while some values are below 10 (about 3% of the time).
+
 | COL_timestamp | store\_id | workstation\_id | operator\_id | item\_id | quantity | regular\_sales\_unit\_price | retail\_price\_modifier | retail\_kpi\_metric |
 |--------------|-----------|-----------------|--------------|----------|----------|-----------------------------|-----------------------|------------------------|
 2019-08-31T10:40:05.0 | store_36 | pos_2  | cashier_75  | item_1098 | 5 | 64.42 | 5.83 | 87  
@@ -92,7 +94,10 @@ echo "session_token: SESSION_TOKEN" >> config/aws.yml
 |---|
 
 
-Then execute the script
+Then execute the script.
+
+As mentioned earlier, the ```gen_pos_log_stream.rb``` script artificially introduces anomalous values for the KPI metric. Most values are between 80 - 95, but some values are below 10 (we inject these anomalous values about 3% of the time).
+
 
 ```shell
 ruby gen_pos_log_stream.rb

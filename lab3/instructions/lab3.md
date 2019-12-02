@@ -249,7 +249,7 @@ Once the predictor is trained, we'll generate forecasts.
 
    ![Forecast Graph](images/forecast_graph.png)   
 
-| <p style="color: #e57222;">Results Explained</p> The P10, P50, and P90 forecast values represent 10%, 50%, and 90% probability of satisfying the actual demand. The P50 forecast value come is expected to come in closest to what the actual demand should be. |
+| <p style="color: #e57222;">Results Explained</p> The P10, P50, and P90 forecast values represent 10%, 50%, and 90% probability of satisfying actual demand. |
 |---|
 
 ---
