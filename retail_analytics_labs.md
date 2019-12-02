@@ -1,6 +1,6 @@
 # Retail Analytics Workshop
 
-In this workshop, we will build an end-to-end pipeline that 
+In this workshop, we will build an end-to-end, serverless pipeline that 
 
 * ingests data from PoS systems (simulated) as transactions happen,
 * derive near-realtime insights (such as detecting anomalies),
