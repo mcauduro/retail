@@ -10,7 +10,7 @@ If you're coming here from Lab 1, you can continue where you're browser already 
 
 If you didn't close your browser tab in Lab 1, you can skip this section and jump to [Step A](Step-A) below. But if you did, follow the next few steps to get back to where you were. 
 
-1. Open a new tab and point it to https://console.aws.amazon.com/kinesisanalytics/home. 
+1. Open a new tab and point it to https://console.aws.amazon.com/kinesis/home. 
 
    Then click on 'RetailDataAnalytics', the Kinesis Data Analytics application that we just created.
 
