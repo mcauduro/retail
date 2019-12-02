@@ -302,7 +302,7 @@ Here, we'll add some streaming SQL to process ingested PoS data on the fly. We'l
 
 6. Look further to the right of this and you'll see the ```ANOMALY_EXPLANATION``` column adjacent to it. Notice the values in this (JSON formatted) column. 
 
-   | <p style="color: #e57222;">Results Explained</p> In the ```ANOMALY_EXPLANATION``` column, you'll see ```retail_kpi_metric``` being called out with an associated ```ATTRIBUTION_SCORE```. This is the algorithms's way of indicatiing the extent to which this column contributed to the anomaly score. |
+   | <p style="color: #e57222;">Results Explained</p> In the ```ANOMALY_EXPLANATION``` column, you'll see ```retail_kpi_metric``` being called out with an associated ```ATTRIBUTION_SCORE```. This is the algorithm's way of indicating the extent to which this column contributed to the anomaly score. |
    |---|   
    
    ![Attribution Scores](images/kpi_attribution.png)   
