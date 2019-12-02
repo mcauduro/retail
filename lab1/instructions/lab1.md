@@ -288,7 +288,7 @@ Here, we'll add some streaming SQL to process ingested PoS data on the fly. We'l
    3. ```DESTINATION_STREAM``` - raw source data ```JOIN```ed with anomaly scores to store in Amazon S3 for historical analysis. You will see this under the 'Real-time analytics' tabs. 
    
    
-4. Under 'In-application streams' click on the ```RETAIL_KPI_ANOMALY_DETECTION_STREAM``` and wait a seconds for the data to start flowing.
+4. Under 'In-application streams' click on the ```RETAIL_KPI_ANOMALY_DETECTION_STREAM``` and wait a few seconds for the data to start flowing.
 
    ![In-Application Stream](images/in_application_streams.png)
 
