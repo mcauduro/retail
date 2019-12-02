@@ -168,6 +168,8 @@ We'll now train a Predictor on this dataset that we just imported.
 
    ![](images/forecast_choose_dimensions.png)
    
+7. **OPTIONAL** We're not assuming any holidays in this simulation, so you can choose to leave the 'Country for holidays' blank.   
+   
    The final choices should have the Train predictor screen looking something like this:
 
    ![Predictor Details](images/predictor_details.png)   
