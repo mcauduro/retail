@@ -60,10 +60,10 @@ To ingest data, we'll first set up an Amazon Kinesis Data Stream to which we can
 
 Since we've created the Kinesis Data Stream to which we can send data to, we'll start running our simulation script that generates the PoS data and send that data to the stream that we just created.
 
-To run this script, switch to the browser tab where you have the Cloud9 IDE open. Go to the Cloud9 IDE terminal and from the root workshop directory ```/retail``` run:
+To run this script, switch to the browser tab where you have the Cloud9 IDE open. Go to the Cloud9 IDE terminal and run:
 
 ```shell
-cd lab1/src
+cd ~/environment/retail/lab1/src
 ```
 
 ```shell
